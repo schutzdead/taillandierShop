@@ -1,0 +1,54 @@
+.footer{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 0 80%;
+    width: 100%;
+    display:grid;
+    grid-template: 1fr / repeat(2,1fr);
+    color: white;
+    font-size: 14px;
+    height: 27vh;
+}
+
+.leftSide{
+    align-self: end;
+    display: flex;
+}
+
+.rights{
+    padding: 15px 30px;
+}
+
+.rightSide{
+    align-items: center;
+    display: flex;
+    padding: 15px 30px;
+    margin-right: 20px;
+    place-self: end end;
+    gap:40px
+}
+
+.icons{
+    display: flex;
+    gap:5px;
+
+}
+
+@media (max-width:500px){
+    .footer{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .leftSide{
+        align-self: center;
+    }
+
+    .rightSide{
+        gap:0;
+        margin:0;
+    }
+}
+
+

@@ -1,0 +1,152 @@
+.containerArticles{
+    display: grid;
+    grid-template: 1fr/ 1fr 4fr;
+    margin: 50px 0 100px 0;
+    min-height: calc(64vh - 150px) !important;
+}
+
+.titleCategories{
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 1.5vh;
+    text-decoration: underline;
+    text-underline-offset: 0.6rem;
+    margin-left: 10px;
+}
+
+.categories{
+    position: fixed;
+    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+    gap:3.5vh;
+    font-size: 16px;
+}
+
+.forTheKeyBis{
+    cursor: pointer;
+}
+
+.forTheKeyBis:hover{
+    font-weight: 600;
+    transform: scale(1.04);
+}
+
+.articles{
+  display: flex;
+  flex-wrap: wrap;
+  gap : 50px;
+  row-gap: 70px;
+}
+
+.globalArticles{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    grid-area: 1/2/1/3;
+    justify-self: center;
+}
+
+.titleArticles{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.eachCard>img{
+    height: auto;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.eachCard{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descriptionArt{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    width: 200px;
+    justify-content: center;
+    gap:10px;
+}
+
+.name{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.quantity, .kilo_price{
+    font-size: 11px;
+    color:grey;
+}
+
+.price{
+    font-weight: 600;
+}
+
+.bottomProps{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.toContain{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+@media (max-width:500px){
+    .categories{
+        position:initial;
+        flex-direction: row;
+        overflow-x: scroll;
+        margin:0 20px;
+        padding-bottom: 20px;
+        align-items: center;
+        
+    }
+
+    .containerArticles{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+
+    .titleCategories{
+        display: none;
+    }
+
+    .globalArticles{
+        padding-top:30px;
+        gap:2rem;
+        align-items: center;
+        width: auto;
+    }
+
+    .articles{
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .eachCard>img{
+        width: 150px;
+    }
+    
+    .descriptionArt{
+        width: 130px;
+        justify-content: flex-end;
+        height: 110px;
+    }
+
+}
+
+@media (max-height:900) {
+
+}

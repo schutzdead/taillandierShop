@@ -1,0 +1,66 @@
+.inputStyle { 
+    border:2px solid rgb(0, 0, 0, 0.5);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    gap : 8px;
+    border-radius: 10px;
+}
+
+.inputStyle label{
+    padding: 10px 0px 0px 17px;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.inputStyle input, .cbStyle input{
+    border: none;
+    margin : 0 0 5px 10px;
+    font-size: 1.10rem;
+    width: 90%;
+    padding-left: 7px;
+}
+
+
+.inputStyle input::placeholder, .cbStyle input::placeholder{
+    font-size: 1rem;
+}
+
+.inputStyle span, .cbStyle span{
+    font-size: 0.65rem;
+    margin: -13px 0 5px 17px ;
+    color: red;
+    display:none;
+}
+
+.inputStyle input:focus, .cbStyle input:focus{
+    outline: none;
+}
+
+.inputStyle input:valid, .cbStyle input:valid{
+    border-radius: 5px;
+}
+
+.cbStyle{
+    height: 50px;
+    border:2px solid rgb(0, 0, 0, 0.5);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 14vw;
+    gap : 8px;
+    border-radius: 10px;
+    position: relative
+}
+
+.cbStyle span {
+    font-size: 0.85rem;
+}
+
+.cbStyle>img{
+    position: absolute;
+    right: 10px;
+    display: none;
+}

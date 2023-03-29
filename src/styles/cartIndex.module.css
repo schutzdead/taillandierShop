@@ -1,0 +1,242 @@
+.global{
+    position:relative
+}
+
+.header{
+    padding-top: 20px;
+    box-sizing: border-box;
+    height: 12vh;
+    color: black;
+    position: sticky;
+    top:0px;
+    z-index:1;
+    display:grid;
+    grid-template: 1fr / 7fr 3fr;
+}
+
+.header>h1{
+    grid-column: 2/3;
+}
+
+.header>div{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 200px;
+    gap:30px
+}
+
+.logoHeader>img{
+    width: 100px;
+    height: auto;
+    place-self: center;
+}
+
+.logoHeader{
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.header>div>h1 {
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color:#3dc9ad;
+}
+
+.main{
+    height: 88vh;
+    display: grid;
+    grid-template: 1fr / 7fr 3fr;
+}
+
+.cart {
+    height: 100vh;
+    margin-top: -12vh;
+    background-color: rgb(246,240,234);
+    border-left: 3px solid #e8e8e8;
+}
+
+.sumUp {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height:50vh;
+    margin: 60px 40px 0 40px;
+    overflow-y:scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;  
+}
+
+.sumUp::-webkit-scrollbar { 
+    display: none;
+}
+
+.resume{
+    margin-top:78px
+}
+
+.yourCart{
+    margin-top: 45px;
+}
+
+.cart>section>h1, .resume>h1{
+font-size: 25px;
+font-weight: 700;
+margin-left: 35px;
+}
+
+.resume>div{
+    display: flex;
+    flex-direction: column;
+    margin : 0 50px;
+}
+
+.resume>div>div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.resume>div>div:nth-child(3)>h2{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.resume>div>div:nth-child(3)>p{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.payment>div>h2, .payment>form>div>h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.payment{
+    margin: 40px 40px 40px 250px;
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+
+.payment>form{
+    display: flex;
+    flex-direction: column;
+    gap:50px; 
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    gap:6px;
+    font-size: 15px;
+    margin : 0 0 40px -50px
+}
+
+.back>img, .back>p{
+    cursor: pointer;
+}
+
+.delivery{
+    margin-top: -20px;
+}
+
+.choiceDelivery{
+    display: flex;
+    gap:2vw;
+    margin-top: 25px;
+}
+
+.choiceDelivery>button{
+    width: 18vw;
+    height: 70px;
+    border : 2px solid rgb(61, 201, 173, 0.7);
+    border-radius: 10px;
+    background-color: rgb(61, 201, 173, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.choiceDelivery>button:nth-child(2){
+    background-color: white;
+    border : 2px dashed rgb(173, 222, 201);
+    color: grey;
+}
+
+.choiceDelivery>button:nth-child(2)>span{
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.infos{
+    display: flex;
+    gap:2vw;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cb{
+    margin-top: 20px;
+    width: 45vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw 1vw;
+}
+
+.saveCard{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    margin-left: 15px;
+    font-size: 14px;
+    position: relative;
+}
+
+.saveCard>img{
+    position: absolute;
+    z-index: -1;
+    width: 18px;
+    left:1px;
+    height: auto;
+    display: none;
+}
+
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.endButton{
+    background-color: rgba(60, 200, 172);
+    border: none;
+    color :white;
+    margin-top : 40px;
+    border-radius: 5px;
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-left: -10px;
+    cursor: pointer;
+}
+
+.endButton>p{
+    padding-top: 4px;
+}
+
+.checkBox{
+    appearance: none; 
+    border : 2px solid rgb(61, 201, 173, 0.7);
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
