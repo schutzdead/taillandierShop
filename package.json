@@ -19,6 +19,5 @@
     "react-dom": "18.2.0",
     "tsx": "^3.12.6",
     "typescript": "5.0.2"
-  },
-  "homepage": "https://schutzdead.github.io/eShop/"
+  }
 }
