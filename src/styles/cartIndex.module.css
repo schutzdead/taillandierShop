@@ -1,15 +1,11 @@
 .global{
-    position:relative
+    position:relative;
 }
 
 .header{
-    padding-top: 20px;
-    box-sizing: border-box;
     height: 12vh;
     color: black;
-    position: sticky;
     top:0px;
-    z-index:1;
     display:grid;
     grid-template: 1fr / 7fr 3fr;
 }
@@ -109,9 +105,20 @@ margin-left: 35px;
     font-size: 24px;
 }
 
-.payment>div>h2, .payment>form>div>h2{
+.payment>div>h2, .payment>form>div>h2, .visa>h2{
     font-size: 20px;
     font-weight: 600;
+}
+
+.visa{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+
+.visa>img{
+    height:35px;
+    width: auto;
 }
 
 .payment{

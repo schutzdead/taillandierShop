@@ -1,22 +1,25 @@
 import styles from "../../styles/cartIndex.module.css"
 import Link from "next/link"
 import Image from "next/image"
-import { Check, ArrowLeft, Lock } from "@/pictureIndex/indexCart"
+import { Check, ArrowLeft, Lock, Visa } from "@/pictureIndex/indexCart"
 import { MainIcon } from "../../../components/Header/headerIndex"
 import { UserContext } from "../_app"
 import React, { useEffect, useState } from "react"
-import { cartArticle } from "../../../components/type"
+import { cartArticle, resume } from "../../../components/type"
 import { EachArticleOnCard } from "../../../components/Cart/cart"
 import { FormInput, FormCB } from "../../../components/form/form"
 import { useRouter } from "next/router"
 import { EndMessage } from "../../../components/endMessage/endMessage"
+import { HTMLScroll } from "../../../components/Header/header"
 
 export default function CheckOut () {
 
-    const [cardDisplay, setCardDisplay] = useState<boolean>(false)
+    const [endDisplay, setEndDisplay] = useState<boolean>(false)
 
-    function turnOnOff () {
-        setCardDisplay(true)
+    const handleSubmit = (e:any) => {
+        setEndDisplay(true)      
+        // Stop the form from submitting and refreshing the page.
+        e.preventDefault()
     }
 
     const cart = React.useContext(UserContext)
@@ -81,7 +84,9 @@ export default function CheckOut () {
                     </div>
                 </div>
 
-                <form className={styles.test}>
+                <form className={styles.form}
+                        onSubmit={handleSubmit}
+                        >
                     <div>
                         <h2>Informations</h2>
                         <div className={styles.infos}>
@@ -90,10 +95,17 @@ export default function CheckOut () {
                         </div>
                     </div>
                     <div>
-                        <h2>Carte de paiement</h2>
+                        <div className={styles.visa}>
+                            <Image
+                                src={Visa}
+                                alt=""/>
+                            <h2>Carte de paiement</h2>
+                        </div>
                         <div className={styles.cb}>
-                            <FormCB type="text" placeholder="Numéro bancaire" span="16 chiffres sans espace" pattern="[0-9]{16}"/>
-                            <FormCB type="text" placeholder="Date d'expiration" span="Format : 01/01" pattern="[0-9]{2}/[0-9]{2}"/>
+                            <div>
+                                <FormCB type="text" placeholder="Numéro bancaire" span="16 chiffres sans espace" pattern="[0-9]{16}"/>
+                            </div>
+                            <FormCB type="text" placeholder="Date d'expiration (JJ/MM)" span="Format : 01/01" pattern="[0-9]{2}/[0-9]{2}"/>
                             <FormCB type="text" placeholder="CVV" span="3 chiffres sans espace" pattern="[0-9]{3}"/>
                             <FormCB type="text" placeholder="Nom du titulaire" span="Uniquement des lettres" pattern="[a-zA-ZÀ-ÿ]{1,}"/>
                             <div className={styles.saveCard}>
@@ -111,8 +123,7 @@ export default function CheckOut () {
                         </div>
                     </div>
                 <div className={styles.buttonDiv}>
-                    <button className={styles.endButton} 
-                            onClick={turnOnOff}
+                    <button className={styles.endButton}
                             type="submit">
                         <Image
                             src={Lock}
@@ -155,15 +166,9 @@ export default function CheckOut () {
                 </section>
             </section>
         </main>
-        <EndMessage />
+        <EndMessage endDisplay={endDisplay}/>
       </div>
     )
-}
-
-
-type resume = {
-    Htext:string,
-    Ptext:number | string
 }
 
 function Resume ({Htext, Ptext}:resume) {

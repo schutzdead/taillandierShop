@@ -46,7 +46,8 @@ export function FormInput ({label, placeholder, span, pattern}:formInput) {
                 autoComplete="off" 
                 placeholder={placeholder}
                 spellCheck="false"
-                required />
+                required
+                />
         <span style={customError ? errorSpan : noErrorSpan}>{span}</span>
     </div>
     )
@@ -54,7 +55,7 @@ export function FormInput ({label, placeholder, span, pattern}:formInput) {
 
 export function FormCB ({placeholder, pattern, type, span}:formCB) {
 
-    const errorInput = { fontSize:"1rem", marginTop:"5px" }
+    const errorInput = { fontSize:"1rem", marginTop:"8px" }
     const noErrorInput = { fontSize:"1.05rem", marginTop:"5px" }
 
     const noErrorImage= { display: "unset" }
@@ -75,7 +76,8 @@ export function FormCB ({placeholder, pattern, type, span}:formCB) {
                     pattern={pattern}
                     placeholder={placeholder}
                     spellCheck="false"
-                    required />
+                    required
+                    />
             <Image
                 src={Check}
                 alt=""

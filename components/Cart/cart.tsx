@@ -81,7 +81,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                         <Link  href={{pathname:"/cart"}}>
                             <button 
                                 className={checkOut ? `${styles.checkOut}` : `${styles.noCheckOut}`}
-                                onClick={()=>HTMLScroll()}
+                                onClick={()=>{turnOff();HTMLScroll()}}
                             >
                                 {checkOut ? `Passer au paiement` : "Aucun article dans votre panier"}
                             </button>

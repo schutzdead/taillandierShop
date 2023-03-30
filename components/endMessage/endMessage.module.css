@@ -1,3 +1,86 @@
-.test{
+.global{
     position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color: rgb(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    height: 28vh;
+    max-width: 400px;
+    width: 28vw;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.confirmation{
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+    line-height:25px
+}
+
+.imageContainer{
+    height: 35px;
+    width: 35px;
+    margin-top: 55px;
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(61, 201, 173);
+    animation : 2s forwards rotation
+}
+
+@keyframes rotation {
+    from {
+        border-radius: 0%;
+        transform: rotate(0deg);
+    }
+  
+    to {
+        border-radius: 50%;
+        transform: rotate(720deg);
+    }
+  }
+
+.container>div>p:nth-child(2){
+    text-align: center;
+}
+
+.container>div>p>u{
+    text-decoration-thickness:3px;
+    text-underline-offset:4px;
+    text-decoration-color: rgb(61, 201, 173);
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    gap:6px;
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px 0 0 15px;
+}
+
+.back>img, .back>p{
+    cursor: pointer;
+}
+
+.back>p {
+    margin-top: -2px;
 }

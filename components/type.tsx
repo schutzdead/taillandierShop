@@ -80,3 +80,8 @@ export type formCB = {
     span:string,
     pattern:string,
 }
+
+export type resume = {
+    Htext:string,
+    Ptext:number | string
+}
