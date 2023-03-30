@@ -1,14 +1,4 @@
-// @ts-check
-
-/**
- * @type {import('next').NextConfig}
- **/
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/taillandierShop',
-  experimental: {
-    appDir: true,
-  },
+  reactStrictMode: true,
 }
-
-module.exports = nextConfig
