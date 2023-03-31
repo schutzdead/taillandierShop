@@ -41,7 +41,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
     }
 
     const newdivStyle = {
-        fontSize:"30px",
+        fontSize:"min(5vw, 30px)",
         fontWeight:"500"
     }
 

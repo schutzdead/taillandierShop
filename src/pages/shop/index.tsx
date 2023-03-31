@@ -1,7 +1,7 @@
 import styles from '../../styles/shop.module.css'
 import { articles } from '../../../components/products'
 import { useEffect, useState } from 'react';
-import { categoriesData, Select } from '../../pictureIndex/categories'
+import { categoriesData, RightArrow, Select } from '../../pictureIndex/categories'
 import Image from 'next/image';
 import { Header } from '../../../components/Header/header'
 import { Footer } from '../../../components/Footer/footer'
@@ -29,6 +29,11 @@ export default function Body() {
                             </div>
                         )
                     })}   
+                    <Image 
+                        src={RightArrow}
+                        alt=""
+                        className={styles.rightArrow}
+                    />
                 </section>
 
                 <section className={styles.globalArticles}> 

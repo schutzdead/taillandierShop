@@ -47,7 +47,7 @@
 }
 
 .titleCard{
-    font-size: 48px;
+    font-size: min(8vw, 48px);
     font-weight: 600;
     width: 50px;
     margin: 0 0 40px 70px ;
@@ -105,7 +105,7 @@
     display:flex;
     flex-direction: column;
     gap: 30px;
-    height:clamp(350px, 48vh, 490px);
+    height:clamp(300px, 45vh, 490px);
     overflow-y:scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -224,12 +224,8 @@
 @media (max-width: 650px) {
     .mainContainer{
         left:0;
-        width: 100vw;   
-    }
-
-    @keyframes forMain {
-        from {left:100%;}
-        to {left:0}
+        width: 100vw; 
+        animation-name:none
     }
 
     .sail{
@@ -240,6 +236,22 @@
         margin:0;
         gap:1rem;
         justify-content: center;
+    }
+
+    .buttonDiv{
+        margin-top: 35px;
+    }
+
+    .center{
+        max-height: 300px;
+    }
+
+    .titleCard{
+        margin-bottom: 35px;
+    }
+
+    .crossDiv{
+        margin-top: 30px;
     }
 }
 

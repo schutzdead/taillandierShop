@@ -19,7 +19,7 @@
 }
 
 .logoHeader>img{
-    width: 100px;
+    width: clamp(85px, 6vw, 100px);
     height: auto;
     place-self: center;
 }
@@ -123,7 +123,8 @@ margin-left: 35px;
     display: flex;
     flex-direction: column;
     gap:50px;
-    min-width: 400px;
+    min-width: 350px;
+    
 }
 
 .payment>form{
@@ -163,7 +164,7 @@ margin-left: 35px;
     font-size: 18px;
     font-weight: 500;
     color: #000000;
-    min-width: 180px;
+    min-width: 120px;
 }
 
 .choiceDelivery>button:nth-child(2){
@@ -266,9 +267,10 @@ margin-left: 35px;
     }  
     
     .header{
-        margin-bottom: 40px;
+        padding-bottom: 20px;
         display: flex;
         justify-content: center;
+        background-color: rgb(246,240,234);
     }
 
     .cart{
@@ -330,6 +332,31 @@ margin-left: 35px;
     }
 
     .resume, .yourCart{    
-        width: 480px;
+        width: 360px;
     }
+
+    .choiceDelivery{
+        gap:30px
+    }
+}
+
+@media (max-width: 475px) {
+    .payment{
+        margin-left: 5vw;
+        margin-right: 0;
+    }
+
+    .header>div{
+        margin:0;
+        padding: 0;
+    }
+
+    .sumUp{
+        margin : 60px 0 60px 0
+    }
+
+    .choiceDelivery, .endButton, .saveCard{
+        margin-left: -5vw;
+    }
+
 }

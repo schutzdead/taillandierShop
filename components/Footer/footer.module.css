@@ -37,11 +37,13 @@
     gap:5px;
 }
 
-@media (max-width:500px){
+@media (max-width:550px){
     .footer{
         display: flex;
         flex-direction: column;
-        height: auto;
+        height: 150px;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     .leftSide{
@@ -49,8 +51,14 @@
     }
 
     .rightSide{
-        gap:0;
+        gap:5vw;
         margin:0;
+        padding: 0 0 15px 0;
+        place-self: center;
+    }
+
+    .rights{
+        display: none;
     }
 }
 

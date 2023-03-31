@@ -1,4 +1,5 @@
 import Select from '../../public/assets/shop/select.svg'
+import RightArrow from '../../public/assets/shop/arrowRight.svg'
 
 export const categoriesData = [
     {id:1, category:"all", text:"Tous"},
@@ -10,4 +11,4 @@ export const categoriesData = [
     {id:7, category:"takeAway", text:"Plats traiteur"}
 ]
 
-export {Select}
+export {Select, RightArrow}
