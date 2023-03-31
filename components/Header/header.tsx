@@ -41,7 +41,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableMainScroll()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
@@ -63,7 +63,16 @@ export const Header = () => {
 }
 
 export function HTMLScroll () {
+    window.scrollTo({
+        top:0,
+        left:0,
+    })
     const html = document.querySelector('html') as HTMLHtmlElement;
     if (html.style.overflow == 'hidden') return html.style.overflow = 'auto'
     html.style.overflow = 'hidden'
+}
+
+
+export function disableMainScroll () {
+    console.log("test")
 }

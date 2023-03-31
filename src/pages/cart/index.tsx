@@ -17,10 +17,6 @@ export default function CheckOut () {
     const [endDisplay, setEndDisplay] = useState<boolean>(false)
 
     const handleSubmit = (e:any) => {
-        window.scrollTo({
-            top:0,
-            left:0,
-        })
         HTMLScroll()
         setEndDisplay(true)      
         // Stop the form from submitting and refreshing the page.

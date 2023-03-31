@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './cart.module.css'
 import { articles } from '../products';
-import { HTMLScroll } from '../Header/header';
+import { HTMLScroll, disableMainScroll} from '../Header/header';
 import { Close, Trash } from './cartIndex'
 import Image from 'next/image';
 import type { cart, eachArticleOnCart, cartArticle} from '../type';
@@ -54,7 +54,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                     <Image
                     src={Close} alt="" 
                     className={styles.cross} 
-                    onClick={()=>{turnOff();HTMLScroll()}}/>
+                    onClick={()=>{turnOff();HTMLScroll(), disableMainScroll ()}}/>
                 </div>
                 <h2 className={styles.titleCard}><span style={newdivStyle}>Votre</span> Panier</h2>
                 <section className={checkOut ? `${styles.center}` : `${styles.noCenter}`}>
