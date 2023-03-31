@@ -42,7 +42,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableBodyScroll (), BSLDisable()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{console.log(window.innerHeight);HTMLScroll(),turnOnOff(), BSLDisable()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
@@ -71,13 +71,6 @@ export function HTMLScroll () {
     const html = document.querySelector('html') as HTMLHtmlElement;
     if (html.style.overflow == 'hidden') return html.style.overflow = 'auto'
     html.style.overflow = 'hidden'
-}
-
-
-export function disableBodyScroll () {
-    const body = document.querySelector('body') as HTMLElement;
-    if (body.style.touchAction == 'none') return body.style.touchAction = 'auto'
-    body.style.touchAction = "none"
 }
 
 export function BSLDisable () {

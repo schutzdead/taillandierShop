@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './cart.module.css'
 import { articles } from '../products';
-import { HTMLScroll, disableBodyScroll, BSLEnable} from '../Header/header';
+import { HTMLScroll, BSLEnable} from '../Header/header';
 import { Close, Trash } from './cartIndex'
 import Image from 'next/image';
 import type { cart, eachArticleOnCart, cartArticle} from '../type';
@@ -54,7 +54,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                     <Image
                     src={Close} alt="" 
                     className={styles.cross} 
-                    onClick={()=>{turnOff();HTMLScroll();disableBodyScroll(), BSLEnable()}}/>
+                    onClick={()=>{turnOff(); HTMLScroll() ; BSLEnable()}}/>
                 </div>
                 <h2 className={styles.titleCard}><span style={newdivStyle}>Votre</span> Panier</h2>
                 <section className={checkOut ? `${styles.center}` : `${styles.noCenter}`}>
@@ -78,13 +78,12 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                             <p>SOUS-TOTAL</p>
                             <p>{total} €</p>
                         </div>
-                        <Link  href={{pathname:"/cart"}}>
+                        <Link href={checkOut ? "/cart" : "/"} >
                             <button 
                                 className={checkOut ? `${styles.checkOut}` : `${styles.noCheckOut}`}
                                 onClick={()=>{
                                         turnOff()
                                         HTMLScroll()
-                                        disableBodyScroll()
                                         BSLEnable()
                                 }}
                             >
@@ -94,12 +93,10 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                     </div>
             </section>
           
-            <div className={styles.sail} onClick={()=>{turnOff();HTMLScroll(); disableBodyScroll(), BSLEnable()}} ></div>
+            <div className={styles.sail} onClick={()=>{turnOff(); HTMLScroll(); BSLEnable()}} ></div>
         </section>
     )
 }
-
-
 
 export function EachArticleOnCard ({idForPicture, titleCard, descriptionCard, priceCard, setYourCard, yourCard}:eachArticleOnCart) {
 

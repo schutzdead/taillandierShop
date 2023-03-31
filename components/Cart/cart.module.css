@@ -5,6 +5,7 @@
     right:0;
     bottom:0;
     touch-action: none;
+    min-height: -webkit-fill-available;
 }
 
 .mainContainer{
@@ -90,6 +91,7 @@
 }
 
 .noCheckOut {
+    text-decoration:none;
     padding: 20px 0;
     background-color: rgb(246,240,234);
     cursor: pointer;
