@@ -46,7 +46,7 @@ export function FormInput ({label, placeholder, span, pattern}:formInput) {
                 autoComplete="off" 
                 placeholder={placeholder}
                 spellCheck="false"
-                // required
+                required
                 />
         <span style={customError ? errorSpan : noErrorSpan}>{span}</span>
     </div>
@@ -76,7 +76,7 @@ export function FormCB ({placeholder, pattern, type, span}:formCB) {
                     pattern={pattern}
                     placeholder={placeholder}
                     spellCheck="false"
-                    // required
+                    required
                     />
             <Image
                 src={Check}
