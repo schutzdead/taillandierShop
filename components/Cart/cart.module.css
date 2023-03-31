@@ -2,8 +2,8 @@
     position: absolute;
     top:0;
     left:0;
-    width:100%;
-    height:100vh;
+    bottom:0;
+    right:0;
 }
 
 .mainContainer{
@@ -225,7 +225,7 @@
     .mainContainer{
         left:0;
         width: 100vw; 
-        animation-name:none
+        animation-name:none;
     }
 
     .sail{
