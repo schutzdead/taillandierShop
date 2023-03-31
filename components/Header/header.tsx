@@ -41,7 +41,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableMainScroll()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableBodyScroll ()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
@@ -73,6 +73,8 @@ export function HTMLScroll () {
 }
 
 
-export function disableMainScroll () {
-    console.log("test")
+export function disableBodyScroll () {
+    const body = document.querySelector('body') as HTMLElement;
+    if (body.style.touchAction == 'none') return body.style.touchAction = 'auto'
+    body.style.touchAction = "none"
 }
