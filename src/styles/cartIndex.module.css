@@ -123,8 +123,6 @@ margin-left: 35px;
     display: flex;
     flex-direction: column;
     gap:50px;
-    min-width: 350px;
-    
 }
 
 .payment>form{
@@ -267,10 +265,9 @@ margin-left: 35px;
     }  
     
     .header{
-        padding-bottom: 20px;
+        padding-bottom: 35px;
         display: flex;
         justify-content: center;
-        background-color: rgb(246,240,234);
     }
 
     .cart{

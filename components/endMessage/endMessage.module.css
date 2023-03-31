@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     border: 2px solid rgb(61, 201, 173);
-    animation : 2s forwards rotation
+    animation : 2s forwards rotation;
 }
 
 @keyframes rotation {
