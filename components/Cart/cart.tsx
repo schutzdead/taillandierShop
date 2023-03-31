@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './cart.module.css'
 import { articles } from '../products';
-import { HTMLScroll, disableBodyScroll} from '../Header/header';
+import { HTMLScroll, disableBodyScroll, BSLEnable} from '../Header/header';
 import { Close, Trash } from './cartIndex'
 import Image from 'next/image';
 import type { cart, eachArticleOnCart, cartArticle} from '../type';
@@ -54,7 +54,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                     <Image
                     src={Close} alt="" 
                     className={styles.cross} 
-                    onClick={()=>{turnOff();HTMLScroll();disableBodyScroll()}}/>
+                    onClick={()=>{turnOff();HTMLScroll();disableBodyScroll(), BSLEnable()}}/>
                 </div>
                 <h2 className={styles.titleCard}><span style={newdivStyle}>Votre</span> Panier</h2>
                 <section className={checkOut ? `${styles.center}` : `${styles.noCenter}`}>
@@ -85,6 +85,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                                         turnOff()
                                         HTMLScroll()
                                         disableBodyScroll()
+                                        BSLEnable()
                                 }}
                             >
                                 {checkOut ? `Passer au paiement` : "Aucun article dans votre panier"}
@@ -93,7 +94,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                     </div>
             </section>
           
-            <div className={styles.sail} onClick={()=>{turnOff();HTMLScroll(); disableBodyScroll()}} ></div>
+            <div className={styles.sail} onClick={()=>{turnOff();HTMLScroll(); disableBodyScroll(), BSLEnable()}} ></div>
         </section>
     )
 }

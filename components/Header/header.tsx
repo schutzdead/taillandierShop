@@ -6,6 +6,7 @@ import styles from "./header.module.css"
 import { MainIcon, Left, ShoppingBag } from './headerIndex' 
 import React from 'react'
 import { UserContext } from '../../src/pages/_app'
+import * as BSL from 'body-scroll-lock';
 
 export const Header = () => { 
 
@@ -41,7 +42,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableBodyScroll ()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), disableBodyScroll (), BSLDisable()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
@@ -77,4 +78,14 @@ export function disableBodyScroll () {
     const body = document.querySelector('body') as HTMLElement;
     if (body.style.touchAction == 'none') return body.style.touchAction = 'auto'
     body.style.touchAction = "none"
+}
+
+export function BSLDisable () {
+    const body = document.querySelector('body') as HTMLElement;
+    BSL.disableBodyScroll(body)
+}
+
+export function BSLEnable () {
+    const body = document.querySelector('body') as HTMLElement;
+    BSL.enableBodyScroll(body)
 }
