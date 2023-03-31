@@ -26,7 +26,7 @@ export function EndMessage ({endDisplay}:endMessage) {
     return (
         <div className={styles.global}>
             <div className={styles.container}>
-                <Link href={document.location.origin} 
+                <Link href="/../" 
                       className={styles.back}
                       onClick={reloadCart}>
                     <Image
