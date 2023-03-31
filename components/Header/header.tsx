@@ -41,7 +41,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{turnOnOff();HTMLScroll()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
