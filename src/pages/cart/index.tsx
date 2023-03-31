@@ -47,7 +47,7 @@ export default function CheckOut () {
             subTotal += article.price*article.quantity
         }
         if(subTotal == 0){
-            push('/shop')
+            push('/')
         }
         setTotal(Math.round(subTotal*100)/100)
     

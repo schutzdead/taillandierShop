@@ -1,13 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
-
-  const divStyle={
-    overflow:"auto",
-  }
-
   return (
-    <Html lang="fr" style={divStyle}>
+    <Html lang="fr">
       <Head />
       <body>
         <Main />

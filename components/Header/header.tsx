@@ -63,7 +63,7 @@ export const Header = () => {
 }
 
 export function HTMLScroll () {
-    const html:any = document.querySelector('html');
-    if (html.style.overflow == 'auto') return html.style.overflow = 'clip'
-    html.style.overflow = 'auto'
+    const html = document.querySelector('html') as HTMLHtmlElement;
+    if (html.style.overflow == 'hidden') return html.style.overflow = 'auto'
+    html.style.overflow = 'hidden'
 }
