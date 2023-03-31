@@ -37,6 +37,7 @@
   flex-wrap: wrap;
   gap : 50px;
   row-gap: 70px;
+  justify-content:space-around
 }
 
 .globalArticles{
@@ -102,16 +103,22 @@
     gap:10px;
 }
 
-@media (max-width:500px){
+@media (max-width:950px){
     .categories{
         position:initial;
         flex-direction: row;
-        overflow-x: scroll;
         margin:0 20px;
         padding-bottom: 20px;
         align-items: center;
-        
+        overflow-x:scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
+
+    .categories::-webkit-scrollbar { 
+        display: none;
+    }
+
 
     .containerArticles{
         display: flex;
@@ -124,7 +131,7 @@
     }
 
     .globalArticles{
-        padding-top:30px;
+        padding:30px 70px;
         gap:2rem;
         align-items: center;
         width: auto;
@@ -132,7 +139,6 @@
 
     .articles{
         gap: 20px;
-        justify-content: center;
     }
 
     .eachCard>img{
@@ -147,6 +153,8 @@
 
 }
 
-@media (max-height:900) {
-
+@media (max-width:550px){
+    .globalArticles{
+        padding:30px 30px;
+    }
 }

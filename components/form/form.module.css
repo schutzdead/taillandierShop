@@ -6,6 +6,7 @@
     width: 18vw;
     gap : 8px;
     border-radius: 10px;
+    min-width: 200px
 }
 
 .inputStyle label{
@@ -52,7 +53,8 @@
     width: 14vw;
     gap : 8px;
     border-radius: 10px;
-    position: relative
+    position: relative;
+    min-width: 210px
 }
 
 .cbStyle span {
@@ -63,4 +65,15 @@
     position: absolute;
     right: 10px;
     display: none;
+}
+
+
+@media (max-width: 1100px) {
+    .inputStyle{
+        min-width: 370px
+    }
+
+    .cbStyle{
+        min-width: 370px
+    }
 }

@@ -109,7 +109,6 @@
     overflow-y:scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scrollbar-width: none;  
 }
 
 .noCenter{
@@ -222,7 +221,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .mainContainer{
         left:0;
         width: 100vw;   
@@ -244,7 +243,7 @@
     }
 }
 
-@media (min-width:800px) and (max-width: 1250px) {
+@media (min-width:900px) and (max-width: 1300px) {
     .mainContainer{
         left:50%;
         width:50%;
@@ -253,15 +252,44 @@
     .sail{
         width:50%;
     }
+
+    .mainContainer, .sail{
+        animation-duration: 1.2s;
+    }
+
+    @keyframes forMain {
+        from {left:100%;}
+        to {left:50%}
+    }
+
+    @keyframes forSail {
+        from {width: 100%}
+        to {width: 50%}
+    }
 }
 
-@media (min-width:600px) and (max-width: 800px) {
+
+@media (min-width:650px) and (max-width: 900px) {
     .mainContainer{
-        left:30%;
-        width:70%;
+        left:35%;
+        width:65%;
     }
 
     .sail{
-        width:30%;
+        width:35%;
+    }
+
+    .mainContainer, .sail{
+        animation-duration: 1.2s;
+    }
+
+    @keyframes forMain {
+        from {left:100%;}
+        to {left:35%}
+    }
+
+    @keyframes forSail {
+        from {width: 100%}
+        to {width: 35%}
     }
 }

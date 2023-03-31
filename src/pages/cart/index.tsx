@@ -17,6 +17,11 @@ export default function CheckOut () {
     const [endDisplay, setEndDisplay] = useState<boolean>(false)
 
     const handleSubmit = (e:any) => {
+        window.scrollTo({
+            top:0,
+            left:0,
+        })
+        HTMLScroll()
         setEndDisplay(true)      
         // Stop the form from submitting and refreshing the page.
         e.preventDefault()
@@ -102,9 +107,7 @@ export default function CheckOut () {
                             <h2>Carte de paiement</h2>
                         </div>
                         <div className={styles.cb}>
-                            <div>
-                                <FormCB type="text" placeholder="Numéro bancaire" span="16 chiffres sans espace" pattern="[0-9]{16}"/>
-                            </div>
+                            <FormCB type="text" placeholder="Numéro bancaire" span="16 chiffres sans espace" pattern="[0-9]{16}"/>
                             <FormCB type="text" placeholder="Date d'expiration (JJ/MM)" span="Format : 01/01" pattern="[0-9]{2}/[0-9]{2}"/>
                             <FormCB type="text" placeholder="CVV" span="3 chiffres sans espace" pattern="[0-9]{3}"/>
                             <FormCB type="text" placeholder="Nom du titulaire" span="Uniquement des lettres" pattern="[a-zA-ZÀ-ÿ]{1,}"/>

@@ -20,9 +20,11 @@ export const Footer = () => {
                 <p className={styles.terms}>Terms & Conditions</p>
                 <p className={styles.privacy}>Privacy Policy</p>
             <div className="icons">
-                <Image src={Facebook} alt="" className={styles.icon}/>
-                <Image src={Instagram} alt="" className={styles.icon}/>
-                <Image src={Linkedin} alt="" className={styles.icon}/>
+                <Image src={Facebook} alt="" className={styles.icon1}/>
+                <Image src={Instagram} alt="" className={styles.icon2}/>
+                <a href="https://www.linkedin.com/in/lucas-soubry" target={"_blank"}>
+                    <Image src={Linkedin} alt="" className={styles.icon3}/>
+                </a>
             </div>
         </section> 
     </footer>

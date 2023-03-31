@@ -75,14 +75,13 @@
     margin-top: 1px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     .header{
         flex-direction: column;
         gap:0.5rem;
         height: auto;
-        margin-top: 1rem;
         padding:0;
-        position: unset;
+        position: relative;
     }
 
     .navBar{
@@ -93,5 +92,6 @@
     .logoHeader{
         margin:unset;
         margin-bottom: 1rem;
+        margin-top: 1rem;
     }
 }

@@ -25,13 +25,16 @@
     padding: 15px 30px;
     margin-right: 20px;
     place-self: end end;
-    gap:40px
+    gap:40px;
+}
+
+.rightSide>p, .icon3{
+    cursor: pointer;
 }
 
 .icons{
     display: flex;
     gap:5px;
-
 }
 
 @media (max-width:500px){

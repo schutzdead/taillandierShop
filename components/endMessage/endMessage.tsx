@@ -5,6 +5,7 @@ import Image from "next/image"
 import { UserContext } from "@/pages/_app"
 import React from "react"
 import Link from "next/link"
+import { HTMLScroll } from "../Header/header"
 
 type endMessage = {
     endDisplay:boolean
@@ -14,7 +15,10 @@ export function EndMessage ({endDisplay}:endMessage) {
 
     const cart = React.useContext(UserContext)
     function reloadCart () {
+        const html = document.querySelector('html') as HTMLHtmlElement;
+        if (html.style.overflow == 'auto') return
         cart.setCart([]) 
+        HTMLScroll()
     }
 
     if(endDisplay == false) return null
@@ -22,7 +26,7 @@ export function EndMessage ({endDisplay}:endMessage) {
     return (
         <div className={styles.global}>
             <div className={styles.container}>
-                <Link href="/" 
+                <Link href="./" 
                       className={styles.back}
                       onClick={reloadCart}>
                     <Image
