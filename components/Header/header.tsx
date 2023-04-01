@@ -42,7 +42,7 @@ export const Header = () => {
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
-                    <li className={styles.shoppingBag} onClick={()=>{console.log(window.innerHeight);HTMLScroll(),turnOnOff(), BSLDisable()}}>
+                    <li className={styles.shoppingBag} onClick={()=>{HTMLScroll(),turnOnOff(), BSLDisable(), docHeight()}}>
                         <Image
                             src={ShoppingBag}
                             alt=""
@@ -82,3 +82,8 @@ export function BSLEnable () {
     const body = document.querySelector('body') as HTMLElement;
     BSL.enableBodyScroll(body)
 }
+
+const docHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+  }

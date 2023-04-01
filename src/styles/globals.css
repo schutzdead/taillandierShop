@@ -8,6 +8,10 @@ html{
     overflow: auto;
 }
 
+:root {
+    --doc-height: 100%;
+}
+
 body{
     position:absolute;
     top:0;
@@ -16,6 +20,7 @@ body{
     left: 0;
     font-family: 'Montserrat', sans-serif;
     min-height: -webkit-fill-available;
+    height: var(--doc-height);
 }
 
 ul{
