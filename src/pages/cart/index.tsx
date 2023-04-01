@@ -2,15 +2,15 @@ import styles from "../../styles/cartIndex.module.css"
 import Link from "next/link"
 import Image from "next/image"
 import { Check, ArrowLeft, Lock, Visa } from "@/pictureIndex/indexCart"
-import { MainIcon } from "../../../components/Header/headerIndex"
+import { MainIcon } from "../../components/Header/headerIndex"
 import { UserContext } from "../_app"
 import React, { useEffect, useState } from "react"
-import { cartArticle, resume } from "../../../components/type"
-import { EachArticleOnCard } from "../../../components/Cart/cart"
-import { FormInput, FormCB } from "../../../components/form/form"
+import { cartArticle, resume } from "../../components/type"
+import { EachArticleOnCard } from "../../components/Cart/cart"
+import { FormInput, FormCB } from "../../components/form/form"
 import { useRouter } from "next/router"
-import { EndMessage } from "../../../components/endMessage/endMessage"
-import { HTMLScroll } from "../../../components/Header/header"
+import { EndMessage } from "../../components/endMessage/endMessage"
+import { HTMLScroll } from "../../components/Header/header"
 
 export default function CheckOut () {
 
@@ -18,21 +18,21 @@ export default function CheckOut () {
 
     const handleSubmit = (e:any) => {
         HTMLScroll()
-        setEndDisplay(true)      
+        setEndDisplay(true)
         // Stop the form from submitting and refreshing the page.
         e.preventDefault()
     }
 
     const cart = React.useContext(UserContext)
     const yourCard = cart.cart
-    const setYourCard = cart.setCart 
+    const setYourCard = cart.setCart
 
     const [isBox, setIsBox] = useState(false)
 
     const clicked = { display:"unset" }
     const unClicked = { display:"none" }
 
-    let [total, setTotal] = useState<number>(0)    
+    let [total, setTotal] = useState<number>(0)
     let subTotal = 0
 
     const { push } = useRouter()
@@ -46,7 +46,7 @@ export default function CheckOut () {
             push('/')
         }
         setTotal(Math.round(subTotal*100)/100)
-    
+
         return () => {
             subTotal=0
         }
@@ -66,11 +66,11 @@ export default function CheckOut () {
             </div>
         </header>
         <main className={styles.main}>
-                   
+
             <section className={styles.payment}>
                 <Link href="/shop" className={styles.back}>
-                    <Image 
-                        src={ArrowLeft} 
+                    <Image
+                        src={ArrowLeft}
                         alt="" />
                     <p>Retourner au magasin</p>
                 </Link>
@@ -138,7 +138,7 @@ export default function CheckOut () {
                 <div className={styles.resume}>
                     <h1>Récapitulatif</h1>
                     <div>
-                        <Resume Htext="Sous-Total" 
+                        <Resume Htext="Sous-Total"
                                 Ptext={total+"€"}/>
                         <Resume Htext="Frais de livraison" Ptext={0+"€"}/>
                         <Resume Htext="Total" Ptext={total+"€"}/>
@@ -165,7 +165,7 @@ export default function CheckOut () {
                 </section>
             </section>
         </main>
-        <EndMessage endDisplay={endDisplay}/>
+        {/* <EndMessage endDisplay={endDisplay}/> */}
       </div>
     )
 }

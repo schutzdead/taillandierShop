@@ -1,6 +1,39 @@
 import * as exports from "./importShop"
 
-export const articles = [
+export type DbArticle = {
+    id: string,
+    img: string,
+    title: string,
+    description: string | null,
+    kilo_price?: string,
+    price: number,
+    quantity: number,
+    shop_id: string,
+    deleted_at: null,
+    created_at: string,
+    updated_at: string,
+    is_in_stock: number,
+    category_id: string,
+    position: string,
+}
+
+export type Article = {
+  id: string,
+  img?: string,
+  title: string,
+  description: string | null,
+  price: number,
+  quantity: number,
+  kilo_price?: string,
+  category_id: string,
+}
+
+
+function buildImageUrl(id: string): string {
+    return `/public/assets/productsWebpResize/${id}.webp`
+}
+
+export const articles: Article[] = [
 {"id":"358","img":`${exports.Article1.src}`,"title":"Beefsteak haché","description":"Environ 120g (1 part).","kilo_price":"Prix au kilo : 27,00 €.","price":3.24,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-06 18:38:29","updated_at":"2022-06-17 13:17:22","is_in_stock":0,"category_id":"52","position":"0"},
 {"id":"359","img":`${exports.Article2.src}`,"title":"Hampe","description":"Environ 240g (2 parts).","kilo_price":"Prix au kilo : 27,50 €.","price":6.60,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-09 09:14:30","updated_at":"2022-06-17 13:17:38","is_in_stock":0,"category_id":"52","position":"0"},
 {"id":"360","img":`${exports.Article3.src}`,"title":"Faux-filet","description":"Environ 300g (2 parts).","kilo_price":"Prix au kilo : 27,00 €.","price":8.10,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-09 09:14:54","updated_at":"2022-06-17 13:17:55","is_in_stock":0,"category_id":"52","position":"0"},
@@ -53,4 +86,15 @@ export const articles = [
 {"id":"407","img":`${exports.Article50.src}`,"title":"Mousse de canard","description":"Environ 150g (2 parts).","kilo_price":"Prix au kilo : 26,50 €.","price":3.98,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-09 09:50:52","updated_at":"2022-06-20 15:50:46","is_in_stock":0,"category_id":"57","position":"0"},
 {"id":"408","img":`${exports.Article51.src}`,"title":"Jambon blanc","description":"Environ 40g (1 part).","kilo_price":"Prix au kilo : 23,50 €.","price":0.94,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-09 09:51:23","updated_at":"2022-06-20 15:51:23","is_in_stock":0,"category_id":"57","position":"0"},
 {"id":"409","img":`${exports.Article52.src}`,"title":"Jambon sec","description":"Environ 40g (1 part).","kilo_price":"Prix au kilo : 29,90 €.","price":1.20,"quantity":0,"shop_id":"14","deleted_at":null,"created_at":"2022-05-09 09:51:56","updated_at":"2022-06-20 15:52:01","is_in_stock":0,"category_id":"57","position":"0"}
-]
+].map((article:DbArticle) => {
+  return {
+    id: article.id,
+    img: article.img,
+    title: article.title,
+    description: article.description,
+    price: article.price,
+    quantity: article.quantity,
+    category_id: article.category_id,
+    kilo_price: article.kilo_price,
+  }
+});

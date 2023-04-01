@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import { Header } from '../../components/Header/header'
-import { Main } from '../../components/Main/main'
-import { Footer } from '../../components/Footer/footer'
+import { Header } from '../components/Header/header'
+import { Main } from '../components/Main/main'
+import { Footer } from '../components/Footer/footer'
 import React from 'react'
 
 export default function Home() {

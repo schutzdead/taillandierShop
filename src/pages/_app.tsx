@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import React from 'react';
-import { cartArticle } from '../../components/type';
+import { cartArticle } from '../components/type';
 
 export type myContext = {
   cart:cartArticle[],

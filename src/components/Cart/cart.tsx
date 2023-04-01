@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import styles from './cart.module.css'
-import { articles } from '../products';
+import { articles, Article } from '../products';
 import { HTMLScroll, BSLEnable} from '../Header/header';
-import { Close, Trash } from './cartIndex'
+import Close from '../../public/assets/cart/close.svg'
+import Trash from '../../public/assets/cart/trash.svg'
 import Image from 'next/image';
-import type { cart, eachArticleOnCart, cartArticle} from '../type';
+import type {  eachArticleOnCart, cartArticle} from '../type';
 import React from 'react'
-import { UserContext } from '../../src/pages/_app'
+import { UserContext } from '../../pages/_app'
 import { ButtonToAdd } from '../ButtonAddRemove/addArticles';
 import Link from 'next/link';
+import { cart } from './cart.decl';
 
 export function Card ({OnOrOff, setCardDisplay}:cart) {
 
@@ -17,8 +19,8 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
 
     const cart = React.useContext(UserContext)
     const yourCard = cart.cart
-    const setYourCard = cart.setCart 
-    
+    const setYourCard = cart.setCart
+
     let subTotal = 0
 
     useEffect(()=> {
@@ -27,7 +29,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
             subTotal += article.price*article.quantity
         }
         setTotal(Math.round(subTotal*100)/100)
-        
+
         if(yourCard.length==0) return setCheckOut(false)
         setCheckOut(true)
 
@@ -52,8 +54,8 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
             <section className={styles.mainContainer}>
                 <div className={styles.crossDiv}>
                     <Image
-                    src={Close} alt="" 
-                    className={styles.cross} 
+                    src={Close} alt=""
+                    className={styles.cross}
                     onClick={()=>{turnOff(); HTMLScroll() ; BSLEnable()}}/>
                 </div>
                 <h2 className={styles.titleCard}><span style={newdivStyle}>Votre</span> Panier</h2>
@@ -79,7 +81,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                             <p>{total} €</p>
                         </div>
                         <Link href={checkOut ? "/cart" : "/"} >
-                            <button 
+                            <button
                                 className={checkOut ? `${styles.checkOut}` : `${styles.noCheckOut}`}
                                 onClick={()=>{
                                         turnOff()
@@ -92,7 +94,7 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
                         </Link>
                     </div>
             </section>
-          
+
             <div className={styles.sail} onClick={()=>{turnOff(); HTMLScroll(); BSLEnable()}} ></div>
         </section>
     )
@@ -101,14 +103,14 @@ export function Card ({OnOrOff, setCardDisplay}:cart) {
 export function EachArticleOnCard ({idForPicture, titleCard, descriptionCard, priceCard, setYourCard, yourCard}:eachArticleOnCart) {
 
     const imgCard = articles[parseInt(idForPicture)-358].img;
-    
+
     const yourCardIndex:number = yourCard.findIndex((element:any) => element.title == titleCard);
     const currentArticle = yourCard[yourCardIndex]
 
     let newArr = [...yourCard]
 
     function upQuantity () {
-        if(currentArticle!==undefined && currentArticle.quantity>=1){ 
+        if(currentArticle!==undefined && currentArticle.quantity>=1){
             newArr[yourCardIndex].quantity += 1
             setYourCard(newArr)
         }
@@ -118,8 +120,8 @@ export function EachArticleOnCard ({idForPicture, titleCard, descriptionCard, pr
         newArr[yourCardIndex].quantity -= 1
         setYourCard(newArr)
         eraseArticle(yourCard, setYourCard, titleCard, currentArticle.quantity)
-    }  
-    
+    }
+
     function deleteArticle () {
         newArr[yourCardIndex].quantity = 0
         setYourCard(newArr)
@@ -129,9 +131,9 @@ export function EachArticleOnCard ({idForPicture, titleCard, descriptionCard, pr
 
     return(
         <div className={styles.bag}>
-            <Image 
-                src={imgCard} 
-                alt="" 
+            <Image
+                src={imgCard}
+                alt=""
                 width={80}
                 height={80}
                 className={styles.pictureBag}
@@ -140,7 +142,7 @@ export function EachArticleOnCard ({idForPicture, titleCard, descriptionCard, pr
                 <h3 className={styles.titleBag}>{titleCard}</h3>
                 <p className={styles.descriptionBag}>{descriptionCard}</p>
                 <div className={styles.quantityItem}>
-                    <ButtonToAdd fctSupp={lessQuantity} fctAdd={upQuantity} quantity={currentArticle.quantity} />
+                    <ButtonToAdd onDelete={lessQuantity} onAdd={upQuantity} quantity={currentArticle.quantity} />
                 </div>
             </section>
             <div className={styles.rightSide}>
@@ -162,11 +164,11 @@ export function upQuantityToArticles (sign:number, currentTitle:string) {
     articleQuantity.quantity += sign
 }
 
-export function eraseArticle (yourCard:any, setYourCard:any, title:string, quantity:number | undefined) {
-    const articleIndex = yourCard.findIndex((element:any) => element.title == title);
+export function eraseArticle (cart:Article[], setCart:any, title:string, quantity:number | undefined) {
     if(quantity !== undefined && quantity == 0) {
-        const sliceBefore = yourCard.slice(0, articleIndex);
-        const sliceAfter = yourCard.slice(articleIndex+1, yourCard.lenght)
-        setYourCard(sliceBefore.concat(sliceAfter))
+        const cartIndex:number = cart.findIndex((cartItem) => cartItem.title == title);
+        let newArr = [...cart]
+        newArr.splice(cartIndex, 1)
+        setCart(newArr);
     }
 }

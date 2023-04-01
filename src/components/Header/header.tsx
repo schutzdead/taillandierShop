@@ -3,12 +3,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from "./header.module.css"
-import { MainIcon, Left, ShoppingBag } from './headerIndex' 
+import { MainIcon, Left, ShoppingBag } from './headerIndex'
 import React from 'react'
-import { UserContext } from '../../src/pages/_app'
+import { UserContext } from '../../pages/_app'
 import * as BSL from 'body-scroll-lock';
 
-export const Header = () => { 
+export const Header = () => {
 
     const [cardDisplay, setCardDisplay] = useState<boolean>(false)
 
@@ -23,8 +23,8 @@ export const Header = () => {
         <header className={styles.header}>
             <Link href="/">
             <div className={styles.logoHeader}>
-                <Image 
-                    src={MainIcon} 
+                <Image
+                    src={MainIcon}
                     alt=""
                     className={styles.logoHeader}
                     priority/>
@@ -35,10 +35,10 @@ export const Header = () => {
                     <Link href="/" className={styles.link}>
                         <li className={styles.accueil}>Accueil</li>
                     </Link>
-                    <Link 
+                    <Link
                         href={{
                             pathname:"/shop",
-                        }} 
+                        }}
                         className={styles.link}>
                         <li className={styles.boutique}>Boutique</li>
                     </Link>
@@ -55,11 +55,11 @@ export const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <Card OnOrOff={cardDisplay} 
-                  setCardDisplay={setCardDisplay} 
+            <Card OnOrOff={cardDisplay}
+                  setCardDisplay={setCardDisplay}
             />
         </header>
-        
+
     )
 }
 

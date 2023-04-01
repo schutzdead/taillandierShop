@@ -1,103 +1,42 @@
 import styles from '../../styles/shop.module.css'
-import { articles } from '../../../components/products'
+import { articles, Article } from '../../components/products';
 import { useEffect, useState } from 'react';
-import { categoriesData, RightArrow, Select } from '../../pictureIndex/categories'
+import { categoriesData, RightArrow, Select } from '@/pictureIndex/categories'
 import Image from 'next/image';
-import { Header } from '../../../components/Header/header'
-import { Footer } from '../../../components/Footer/footer'
-import { RemoveOrAdd } from '../../../components/ButtonAddRemove/addArticles';
-import type { category, article } from '../../../components/type';
+import { Header } from '@components/Header/header'
+import { Footer } from '@components/Footer/footer'
+import { RemoveOrAdd } from '@components/ButtonAddRemove/addArticles';
+import type { category, article } from '@/components/type';
 import React from 'react';
-import { memo } from 'react';
+import { UserContext } from '../_app';
+
+function resizeSelector (variable:any, size:number) {
+    variable.width = size
+    variable.height = size
+}
 
 export default function Body() {
 
-    const allCategories = categoriesData; 
-    const [articleData,setArticleData] = useState(articles)
-    const [currentCategory, setCurrentCategory] = useState<string>("Tous les produits")
+    const allCategories = categoriesData;
+    const [articleData,setArticleData] = useState(articles);
+    const [currentCategory, setCurrentCategory] = useState<string>("Tous les produits");
+    const [filteredArticles, setFilteredArticles] = useState(articles);
 
-    return (
-        <>
-            <Header/>
-            <main className={styles.containerArticles}>
-                <section className={styles.categories}>
-                    <h2 className={styles.titleCategories}>Catégories </h2>
-                    {allCategories.map((element:any) => {  
-                        return(
-                            <div className={styles.forTheKeyBis} key={element.id}>
-                                <Category name={element.category} text={element.text} setArticleData={setArticleData} setCurrentCategory={setCurrentCategory}/>
-                            </div>
-                        )
-                    })}   
-                    <Image 
-                        src={RightArrow}
-                        alt=""
-                        className={styles.rightArrow}
-                    />
-                </section>
-
-                <section className={styles.globalArticles}> 
-                    <h2 className={styles.titleArticles}>{currentCategory}</h2>
-                    <div className={styles.articles}>
-                        {articleData.map((element:any) => {
-                            return(
-                            <div className={styles.forTheKey} key={element.id}>
-                                <Article article_number={element.id-358}/>
-                            </div>
-                            )
-                        })}
-                    </div>
-                </section>
-            </main>
-            <Footer />
-        </>
-    )
-}
-
-const Category = memo(function category({name, text, setArticleData, setCurrentCategory}:category){
-
-    function resizeSelector (variable:any, size:number) {
-        variable.width = size
-        variable.height = size
-    }
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() =>{
-        const firstOne = document.querySelector(`.${styles.toContain}>img`) as HTMLImageElement        
-        updateSelector()
-        resizeSelector(firstOne, 20)
-
-        return()=>{
-            resizeSelector(firstOne, 0)
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const {cart, setCart} = React.useContext(UserContext);
 
     function dataChange (categoryNum:string) {
-        setArticleData(articles.filter(e => e.category_id == categoryNum))
+        setFilteredArticles(articleData.filter(e => e.category_id == categoryNum))
     }
 
-    function updateSelector () {
-        const arrayOfImg = Array.from(document.querySelectorAll(`.${styles.toContain}>img`)) as HTMLImageElement[];
-        arrayOfImg.forEach(element => {
-            resizeSelector(element, 0)
-        });
-    }
-
-    function updateName (element:any){
-        const stockName = element.target.textContent;
-        setCurrentCategory(stockName)
-    }
-
-    function addSelector (element:any) { 
+    function addSelector (element:any) {
         const stockName = element.target.parentElement.firstChild;
         resizeSelector(stockName, 20)
-        element.view.pageYOffset = 0
+        element.view.pageYOffset = 0;
     }
 
-    function whichCategory (e:any) {
+    function filterCategories (e:any, categoryNum:string) {
         switch(e.target.className){
-            case "all": setArticleData(articles)
+            case "all": setFilteredArticles(articleData)
                         addSelector(e)
                         break;
             case "beef": dataChange("52")
@@ -119,10 +58,83 @@ const Category = memo(function category({name, text, setArticleData, setCurrentC
                              addSelector(e)
                              break;
         }
+        setArticleData(articles.filter(e => e.category_id == categoryNum))
     }
 
+    return (
+        <>
+            <Header/>
+            <main className={styles.containerArticles}>
+                <section className={styles.categories}>
+                    <h2 className={styles.titleCategories}>Catégories </h2>
+                    {allCategories.map((element:any) => {
+                        return(
+                            <div className={styles.forTheKeyBis} key={element.id}>
+                                <Category name={element.category} text={element.text} setArticleData={filterCategories} setCurrentCategory={setCurrentCategory} id={element.id}/>
+                            </div>
+                        )
+                    })}
+                    <Image
+                        src={RightArrow}
+                        alt=""
+                        className={styles.rightArrow}
+                    />
+                </section>
+
+                <section className={styles.globalArticles}>
+                    <h2 className={styles.titleArticles}>{currentCategory}</h2>
+                    <div className={styles.articles}>
+                        {filteredArticles.map((element:any) => {
+                            return(
+                            <div className={styles.forTheKey} key={element.id}>
+                                <ArticleC article={element} >
+                                    <RemoveOrAdd article={element} cart={cart} setCart={setCart}/>
+                                </ArticleC>
+                            </div>
+                            )
+                        })}
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </>
+    )
+}
+
+function Category({name, text, setArticleData, setCurrentCategory, id}:category & {id:number}) {
+
+
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() =>{
+        const firstOne = document.querySelector(`.${styles.toContain}>img`) as HTMLImageElement
+        updateSelector()
+        resizeSelector(firstOne, 20)
+
+        return()=>{
+            resizeSelector(firstOne, 0)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
+
+    function updateSelector () {
+        const arrayOfImg = Array.from(document.querySelectorAll(`.${styles.toContain}>img`)) as HTMLImageElement[];
+        arrayOfImg.forEach(element => {
+            resizeSelector(element, 0)
+        });
+    }
+
+    function updateName (element:any){
+        const stockName = element.target.textContent;
+        setCurrentCategory(stockName)
+    }
+
+
+
     return (<a className={styles.toContain}>
-                <Image 
+                <Image
                     src={Select.src}
                     alt=""
                     width={0}
@@ -137,41 +149,45 @@ const Category = memo(function category({name, text, setArticleData, setCurrentC
                         })
                         updateSelector();
                         updateName(e)
-                        whichCategory(e);
+                        setArticleData(e, id);
                     }}>
                     {text}
                 </h3>
             </a>
             )
-})
+};
 
-const Article = memo(function article ({article_number}:article) {
+type ArticleProps = {
+    article:Article
+};
 
-    const img_number = articles[article_number].img;    
-    
+function ArticleC ({article, children}:ArticleProps & {children:React.ReactNode}) {
+
 
 
     return (
         <div className={styles.eachCard}>
+            {article.img &&
             <Image
-                src={img_number} 
+                src={article.img}
                 width={220}
                 height={220}
-                alt="" 
+                alt=""
                 priority/>
+            }
             <div className={styles.descriptionArt}>
-                <h3 className={styles.name}>{articles[article_number].title}</h3>
+                <h3 className={styles.name}>{article.title}</h3>
                 <div className={styles.bottomProps}>
                     <div className={styles.leftProps}>
-                        <p className={styles.price}>{articles[article_number].price} €</p>
+                        <p className={styles.price}>{article.price} €</p>
                     </div>
-                    <RemoveOrAdd article_number={article_number} />
+                    {children}
                 </div>
                 <div className={styles.productDescription}>
-                    <p className={styles.quantity}>{articles[article_number].description}</p>
-                    <p className={styles.kilo_price}>{articles[article_number].kilo_price}</p>
+                    <p className={styles.quantity}>{article.description}</p>
+                    <p className={styles.kilo_price}>{article.kilo_price}</p>
                 </div>
             </div>
         </div>
     )
-})
+}
